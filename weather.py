@@ -51,7 +51,6 @@ def convert_f_to_c(temp_in_farenheit):
 
 def calculate_mean(weather_data):
 
-    weather_data = sum("temperatures") / len("temperatures")
     """Calculates the mean value from a list of numbers.
 
     Args:
@@ -59,7 +58,9 @@ def calculate_mean(weather_data):
     Returns:
         A float representing the mean value.
     """
-    pass
+
+    return sum(map(float, weather_data))/len(weather_data)
+
 
 
 def load_data_from_csv(csv_file):
