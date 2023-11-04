@@ -64,14 +64,41 @@ def calculate_mean(weather_data):
 
 
 def load_data_from_csv(csv_file):
+    with open(csv_file, encoding="utf-8") as my_file:
+        reader = csv.reader(my_file)
+        next(reader)
+        my_list = []
+        for line in reader:
+            if line != []:
+                my_list.append(line)
+
+        for line in my_list:
+            line[1] = int(line[1])
+            line[2] = int(line[2]) 
+
+        
+        # my_list = list(map(int, reader))
+        # y = ''.join(my_list)
+        # z = int(y)
+        for data in my_list:
+            print(data)
+
+
+
+        return my_list
+
     """Reads a csv file and stores the data in a list.
 
+    
+    
     Args:
         csv_file: a string representing the file path to a csv file.
     Returns:
         A list of lists, where each sublist is a (non-empty) line in the csv file.
     """
-    pass
+
+
+    
 
 
 def find_min(weather_data):
