@@ -102,6 +102,35 @@ def load_data_from_csv(csv_file):
 
 
 def find_min(weather_data):
+
+    min_data = None
+    count = 0
+    position = 0
+
+    if len(weather_data) == 0:
+        return ()
+    
+    for data in weather_data:
+        float_data = float(data) 
+
+        if min_data == None:
+            min_data = float_data
+        
+        elif float_data < min_data:
+            min_data = float_data
+            position = count
+
+        elif float_data == min_data:
+            position = count
+
+
+        count = count + 1
+
+
+            
+    return min_data, position
+
+
     """Calculates the minimum value in a list of numbers.
 
     Args:
