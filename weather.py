@@ -142,6 +142,33 @@ def find_min(weather_data):
 
 
 def find_max(weather_data):
+
+    max_data = None
+    count = 0
+    position = 0
+
+    if len(weather_data) == 0:
+        return ()
+    
+    for data in weather_data:
+        float_data = float(data) 
+
+        if max_data == None:
+            max_data = float_data
+        
+        elif float_data > max_data:
+            max_data = float_data
+            position = count
+
+        elif float_data == max_data:
+            position = count
+
+
+        count = count + 1
+
+
+            
+    return max_data, position
     """Calculates the maximum value in a list of numbers.
 
     Args:
