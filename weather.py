@@ -187,6 +187,53 @@ def generate_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
+    
+    low_temp_in_f = []
+    high_temp_in_f = []
+    insert_date = []
+
+    low_temp_in_c = []
+    high_temp_in_c = []
+    
+    for row in weather_data:
+        insert_date.append(row[0])
+        low_temp_in_f.append(row[1])
+        high_temp_in_f.append(row[2])
+
+
+
+    for item in low_temp_in_f:
+        low_temp_in_c.append(convert_f_to_c(item))
+
+    for item in high_temp_in_f:
+        high_temp_in_c.append(convert_f_to_c(item))
+
+    low_temp, low_index = find_min(low_temp_in_c)
+    high_temp, high_index = find_max(high_temp_in_c)
+    
+    date_text_low = (convert_date(weather_data[low_index][0]))
+    date_text_high = (convert_date(weather_data[high_index][0]))
+
+    mean_low = round(calculate_mean(low_temp_in_c), 1)
+    mean_high = round(calculate_mean(high_temp_in_c), 1)
+
+
+    return (f"{len(weather_data)} Day Overview\n  The lowest temperature will be {low_temp}{DEGREE_SYBMOL}, and will occur on {date_text_low}.\n  The highest temperature will be {high_temp}{DEGREE_SYBMOL}, and will occur on {date_text_high}.\n  The average low this week is {mean_low}{DEGREE_SYBMOL}.\n  The average high this week is {mean_high}{DEGREE_SYBMOL}.\n")
+    
+
+
+
+    # insert_date = []
+    # insert_min = []
+    # insert_max = []
+    # min_in_c = []
+    # max_in_c = []
+    # min_temp = []
+    # max_temp = []
+    # mean_min = []
+    # mean_max = []
+
+
     pass
 
 
@@ -198,4 +245,18 @@ def generate_daily_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
-    pass
+
+    summary = ""
+
+    for value in weather_data:
+        insert_date_text = convert_date(value[0])
+        insert_min = (format_temperature(convert_f_to_c(value[1])))
+        insert_max = (format_temperature(convert_f_to_c(value[2])))
+        summary += (
+                        f"---- {insert_date_text} ----\n"
+                        f"  Minimum Temperature: {insert_min}\n"
+                        f"  Maximum Temperature: {insert_max}\n\n"
+                    )
+
+    return summary
+
