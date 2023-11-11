@@ -80,8 +80,7 @@ def load_data_from_csv(csv_file):
         # my_list = list(map(int, reader))
         # y = ''.join(my_list)
         # z = int(y)
-        for data in my_list:
-            print(data)
+
 
 
 
